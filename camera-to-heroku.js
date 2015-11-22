@@ -7,13 +7,10 @@ var s3Stream = require('s3-upload-stream')(new AWS.S3());
 
 let takePictureAndUpload = function() {
 
-    // Set the client to be used for the upload. 
-    AWS.config.loadFromPath('./config.json');
-
     var compress = zlib.createGzip();
     var upload = s3Stream.upload({
-      "Bucket": "osvb-upload",
-      "Key": "QCXvOtAwCrHX6kGbogXVbmd1B/iSAq5yB1dUMSt2"
+      "Bucket": process.env.S3_BUCKET_NAME
+      "Key": process.env.S3_BUCKET_KEY
     });
 
 
